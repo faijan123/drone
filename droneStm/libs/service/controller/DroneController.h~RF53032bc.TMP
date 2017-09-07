@@ -1,0 +1,35 @@
+#ifndef DroneController_h_
+#define DroneController_h_
+#include "stm32f4xx.h"
+typedef struct ControlValue
+{
+	float 		value;
+	int 			availid;
+	uint32_t 	timeReceiveControl;
+}ControlValue;
+
+
+typedef struct DroneControlData{
+	ControlValue roll,pitch,yaw,thr;
+}DroneControlData;
+
+
+void 	initDroneController(void);
+int 	isTurnOnDrone(void);
+int 	isTurnOffDrone(void);
+int   isHoldPosition(void);
+int   isHoldAltitude(void);
+int 	isTakeOffDrone(void);
+int 	isRunGyroCalibrationProgram(void);
+
+ControlValue getControlRollValue(void);
+ControlValue getControlPitchValue(void);
+ControlValue getControlYawValue(void);
+ControlValue getControlThrValue(void);
+void  updateDroneController(void);
+
+void enableController();
+void disableController();
+
+
+#endif
